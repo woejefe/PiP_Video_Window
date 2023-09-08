@@ -14,5 +14,16 @@ Currently want a way to pick the source
 Dependencies are pillow, imutils, tkinter, and C2V 
 
 
+
+
+
+
+
+
+
+
+
+
+
 https://github.com/woejefe/MiniWebcamViewer/assets/113958695/a124a9f2-a739-432e-a921-85cd8e269dc9
 
