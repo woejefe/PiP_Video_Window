@@ -1,4 +1,4 @@
-# MiniWebcamViewer / Pip-Window (used for NDI/OBS webcam viewer)
+# PiP WebcamViewer / Pip-Window (used for NDI/OBS webcam viewer)
 
 I wanted a way to display an NDI input for program and preview windows, or just to monitor a video input in a borderless window
 
