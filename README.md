@@ -9,5 +9,6 @@ Works great with TouchOSC to preview a window if using for video mixer . Just dr
 
 
 
-https://github.com/woejefe/MiniWebcamViewer/assets/113958695/7eb18b18-e3a8-48de-aaeb-f72efa54f7b4
+
+https://github.com/woejefe/MiniWebcamViewer/assets/113958695/a124a9f2-a739-432e-a921-85cd8e269dc9
 
