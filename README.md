@@ -2,14 +2,13 @@
 
 I wanted a way to display an NDI input for program and preview windows, or just to monitor a video input in a borderless window
 
-Opens first webcam input on main screen in 360x180 window... Alt+F4 to exit... it always stays on top
-
-Works great with TouchOSC to preview a window if using for video mixer . Just drag into position
+  --Opens first webcam input on main screen in 360x180 window... Alt+F4 to exit... it always stays on top
+  --Works great with TouchOSC to preview a window if using for video mixer . Just drag into position
 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
 
-Currently want a way to pick the source
+Currently want a way to pick the source (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also have a way to retry connection on faled frame
 
 Dependencies are pillow, imutils, tkinter, and C2V 
 
