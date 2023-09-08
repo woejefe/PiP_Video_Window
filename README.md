@@ -8,7 +8,7 @@ I wanted a way to display an NDI input for program and preview windows, or just 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
 
-Currently want a way to pick the source (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also have a way to retry connection on faled frame
+Currently want a way to pick the source (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also have a way to retry connection on failed frame
 
 Dependencies are pillow, imutils, tkinter, and C2V 
 
