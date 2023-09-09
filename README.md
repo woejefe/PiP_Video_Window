@@ -1,6 +1,6 @@
 # PiP WebcamViewer / Pip-Window (used for NDI/OBS webcam viewer)
 
-I wanted a way to display an NDI input for program and preview windows, or just to monitor a video input in a borderless window
+I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, for a preview window viewer in a borderless window without it affecting other windows that always stays on top.
 
   --Opens first webcam input on main screen in 360x180 window... Alt+F4 to exit... it always stays on top
   
