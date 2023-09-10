@@ -37,7 +37,7 @@ class Grip:
         if self.releaseCMD != None :
             self.releaseCMD()
             
-
+webcamsource=0
             
 class MainWindow:
     def __init__(self):    
@@ -62,7 +62,7 @@ class MainWindow:
         x = 10
         y = 10
         #select source
-        source=0                    
+        self.source=webcamsource                    
         #format how geometry in injested
         self.window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         self.window.geometry('{}x{}'.format(width, height))
@@ -70,11 +70,12 @@ class MainWindow:
         self.panel = tk.Label(self.window)
         self.panel.pack(side="left")
         #open webcam.... 'source' corresponds to the webcam input,,, looking to make a dropdown on middle click to select source
-        self.stream = VideoStream(source)
+        
+        self.stream = VideoStream(self.source)
         self.stream.start()
         #set latency defaults
         self.stop = False
-        self.window.after(30, self.video_loop)
+        self.window.after(33, self.video_loop)
         #window management to close window 
         self.window.wm_protocol("WM_DELETE_WINDOW", self.on_close) 
         #makes the window draggable when Right CLick click is held and moved
@@ -82,6 +83,8 @@ class MainWindow:
         #Binds Escape Button to close window and middle click to refresh stream
         self.window.bind("<Escape>", self.on_close)     
         self.window.bind("<ButtonRelease-2>",self.refresh)
+        self.window.bind("<Prior>",self.source0)
+        self.window.bind("<Next>",self.source1)
        
         #starts window in mainloop
         self.window.mainloop()
@@ -90,9 +93,9 @@ class MainWindow:
         width  = 320
         height = 180
         scale = (width, height)
-        frame = self.stream.read()
+        self.frame = self.stream.read()
         #reads stream input then converts to correct color range then scales down (using 16:9 ratio)
-        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
         resize = cv2.resize(image,scale,interpolation=cv2.INTER_LINEAR)
         #sets image for PhotoImage to read input as array
         self.image = Image.fromarray(resize)       
@@ -101,17 +104,34 @@ class MainWindow:
         self.panel.configure(image=self.photo)
         #Sets how often to get frames from webcam       
         if not self.stop:
-            self.window.after(30, self.video_loop)            # 40ms = 25FPS
+            self.window.after(33, self.video_loop)            # 40ms = 25FPS
             #self.window.after(25, self.video_loop)   # 25ms = 40FPS    
     
    
     
     def refresh(self,e):     
-        self.stop=True
-        self.stop=False
+        print('Off')
+        self.window.after(33, self.video_loop)
+        print('On')
         
         
+    def source0(self,e):
+        webcamsource=0
+        print("sourceup")
+        self.stream.stop()
+        self.stream = VideoStream(webcamsource)
+        self.stream.start()
+        self.window.after(33, self.video_loop)
         
+    def source1(self,e):
+        webcamsource=1    
+        print("sourcedown")
+        self.stream.stop()
+        self.stream = VideoStream(webcamsource)
+        self.stream.start()
+        self.window.after(33, self.video_loop)
+        
+       
         
     
    #closes out all loops                       
