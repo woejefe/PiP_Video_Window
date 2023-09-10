@@ -76,9 +76,11 @@ class MainWindow:
         self.window.wm_protocol("WM_DELETE_WINDOW", self.on_close) 
         #makes the window draggable when Right CLick click is held and moved
         grip = Grip(self.window)
-        #Binds Escape Button to close window and double right click to refresh stream
-        self.window.bind("<Escape>", exit)        
-        #starts loop
+        #Binds Escape Button to close window and middle click to refresh stream
+        self.window.bind("<Escape>", self.on_close)     
+        self.window.bind("<ButtonRelease-2>",self.refresh)
+       
+        #starts window in mainloop
         self.window.mainloop()
     # function to get frames from webcam input
     def video_loop(self):      
@@ -97,12 +99,19 @@ class MainWindow:
         #Sets how often to get frames from webcam       
         if not self.stop:
             self.window.after(30, self.video_loop)            # 40ms = 25FPS
-            #self.window.after(25, self.video_loop)   # 25ms = 40FPS
+            #self.window.after(25, self.video_loop)   # 25ms = 40FPS    
     
-    def exit(e):
-        self.window.destroy()
+    
+   
+    
+    def refresh(self,e):        
+        self.video_loop()
+        
+        
+        
+    
    #closes out all loops                       
-    def on_close(self):
+    def on_close(self,e):
         self.stop = True
         self.stream.stop()
         self.window.destroy()       
