@@ -1,4 +1,4 @@
-# PiP Webcam Viewer / Pip Window / Borderless Window
+# PiP Webcam Viewer / PiP NDi Viewer / Borderless Window
 
 I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, for a preview window viewer in a borderless window without it affecting other windows that always stays on top.
 
