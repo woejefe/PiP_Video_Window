@@ -2,7 +2,7 @@
 
 I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, for a preview window viewer in a borderless window without it affecting other windows that always stays on top.
 
-  --Opens first webcam input on main screen in 360x180 window... Alt+F4 to exit... it always stays on top
+  --Opens first webcam input on main screen in 360x180 at x=10,y=10 in draggable window... Alt+F4 or Escape Button to exit... it always stays on top. Drag with Right Click
   
   --Works great with TouchOSC to preview a window if using for video mixer . Just drag into position
 
