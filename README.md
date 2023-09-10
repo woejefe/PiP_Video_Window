@@ -1,8 +1,8 @@
-# PiP Webcam Viewer / PiP NDi Viewer / Borderless Window
+# PiP NDi Viewer / Borderless Window
 
 I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, for a preview window viewer in a borderless window without it affecting other windows that always stays on top.
 
-  --Opens first webcam input on main screen in 360x180 at x=10,y=10 in draggable window... Alt+F4 or Escape Button to exit... it always stays on top.
+  --Opens first ndi input on main screen in 360x180 at x=10,y=10 in draggable window... Alt+F4 or Escape Button to exit... it always stays on top.
   
   --Drag with Right Click
 
@@ -13,9 +13,9 @@ I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
 
-Currently need help on line 74 (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also want to have a way to retry the connection on failing to get device 
+Currently need help to pick stream in popup window and also want to have a way to retry the connection on failing to get device 
 
-Dependencies are pillow, imutils, tkinter, and C2V 
+Dependencies are pillow, imutils, tkinter, and C2V, and "The NDI runtime must be installed. Recommended NDI tools to be installed too for testing." per [CarlosFdez](https://github.com/CarlosFdez)
 
 
 
