@@ -63,7 +63,7 @@ class MainWindow:
         #format how geometry in injested
         self.window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         self.window.geometry('{}x{}'.format(width, height))
-        #no clue honestly... was copied... create the capture label for video maybe???
+        #create the capture label for video 
         self.panel = tk.Label(self.window)
         self.panel.pack(side="left")
         #open webcam.... 'source' corresponds to the webcam input,,, looking to make a dropdown on middle click to select source
@@ -77,8 +77,8 @@ class MainWindow:
         #makes the window draggable when Right CLick click is held and moved
         grip = Grip(self.window)
         #Binds Escape Button to close window and double right click to refresh stream
-        self.window.bind("<Escape>", exit)              
-        #closes loop
+        self.window.bind("<Escape>", exit)        
+        #starts loop
         self.window.mainloop()
     # function to get frames from webcam input
     def video_loop(self):      
@@ -97,10 +97,7 @@ class MainWindow:
         #Sets how often to get frames from webcam       
         if not self.stop:
             self.window.after(30, self.video_loop)            # 40ms = 25FPS
-            #self.window.after(25, self.video_loop)   # 25ms = 40FPS   
-    #calls function to exit on escape button   
-    def popup(e):
-        self.window.popup.tk_popup(10,10,0)
+            #self.window.after(25, self.video_loop)   # 25ms = 40FPS
     
     def exit(e):
         self.window.destroy()
@@ -110,6 +107,7 @@ class MainWindow:
         self.stream.stop()
         self.window.destroy()       
  
+
  #calls on the main loop   
 if __name__ == '__main__':
     MainWindow()
