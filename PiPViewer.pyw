@@ -55,7 +55,6 @@ class MainWindow:
         height = 180
         self.scale=(width,height)
         
-
         #set the width of the screen inside
         screen_width  = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
@@ -63,7 +62,7 @@ class MainWindow:
         x = 10
         y = 10
         #select source
-        source=1                    
+        source=0                    
         #format how geometry in injested
         self.window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         self.window.geometry('{}x{}'.format(width, height))
@@ -83,18 +82,18 @@ class MainWindow:
         #Binds Escape Button to close window and middle click to refresh stream
         self.window.bind("<Escape>", self.on_close)     
         self.window.bind("<ButtonRelease-2>",self.refresh)
-        
-        
        
         #starts window in mainloop
         self.window.mainloop()
     # function to get frames from webcam input
     def video_loop(self):      
-        
+        width  = 320
+        height = 180
+        scale = (width, height)
         frame = self.stream.read()
         #reads stream input then converts to correct color range then scales down (using 16:9 ratio)
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        resize = cv2.resize(image,self.scale,interpolation=cv2.INTER_LINEAR)
+        resize = cv2.resize(image,scale,interpolation=cv2.INTER_LINEAR)
         #sets image for PhotoImage to read input as array
         self.image = Image.fromarray(resize)       
         self.photo = ImageTk.PhotoImage(self.image)  # assigned to class variable `self.photo` so it resolves problem with bug in PhotoImage
@@ -108,7 +107,9 @@ class MainWindow:
    
     
     def refresh(self,e):     
-        self.video_loop()
+        self.stop=True
+        self.stop=False
+        
         
         
         
