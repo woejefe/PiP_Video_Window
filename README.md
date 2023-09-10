@@ -19,6 +19,10 @@ Dependencies are pillow, imutils, tkinter, and C2V
 
 
 
+Thanks to https://github.com/CarlosFdez/pyNDI/tree/master i made a version that takes in NDI sources into the same type of window
+
+
+
 
 
 
