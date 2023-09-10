@@ -9,7 +9,7 @@ I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
 
-Currently need help on line 74 (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also want to have a way to retry the connection on failed frame or display that the connection is in use elsewhere (after x failed frames)
+Currently need help on line 74 (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also want to have a way to retry the connection on failing to get device 
 
 Dependencies are pillow, imutils, tkinter, and C2V 
 
