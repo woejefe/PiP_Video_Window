@@ -140,7 +140,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        #self.window.after(33, self.video_loop)
+        
         
     def source1(self,e):
         webcamsource=1    
@@ -148,7 +148,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        #self.window.after(33, self.video_loop)
+        
     
     def source2(self,e):
         webcamsource=2    
@@ -156,7 +156,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        #self.window.after(33, self.video_loop)   
+           
        
         
     
