@@ -114,9 +114,10 @@ class MainWindow:
     
     def refresh(self,e):     
         print('Off')
-        self.start = True
+        self.stream.stop()
+        self.stream = VideoStream(webcamsource)
         print('On')
-        self.start = False
+        self.stream.start()
     
     def resizelarge(self,e):     
         self.window.geometry('{}x{}'.format(860 ,440))
