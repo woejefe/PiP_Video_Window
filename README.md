@@ -3,7 +3,7 @@
 I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, for a preview window viewer in a borderless window without it affecting other windows that always stays on top. If webcam is in use in other program open this first then use number key to chang source
 
   --Opens first webcam input on main screen in 360x180 at x=10,y=10 in draggable window... Alt+F4 or Escape Button to exit... it always stays on top.
-  
+  --page up and page down change size of window... will add more resolutions soon
   --Drag with Right Click
 
   --Refresh video_loop with middle click
