@@ -3,14 +3,40 @@ from PIL import Image, ImageTk
 from imutils.video import VideoStream
 import cv2
 import datetime
-#pyNDI Import
 import finder
 import receiver
 import lib
+import imutils
 
 find = finder.create_ndi_finder()
 NDIsources = find.get_sources()
-recieveSource = NDIsources[0]
+recieveSource = None;
+if(len(NDIsources) > 0):
+	print(str(len(NDIsources)) + " NDI Sources Detected")
+	for x in range(len(NDIsources)):
+		print(str(x) + ". "+NDIsources[x].name + " @ "+str(NDIsources[x].address))
+	if(len(NDIsources) == 1):
+		#If only one source, connect to that source
+		recieveSource = NDIsources[0]
+		print("Automatically Connecting To Source...")
+	else:
+		awaitUserInput = True;
+		while(awaitUserInput):
+			print("")
+			try:
+				key = int(input("Please choose a NDI Source Number to connect to:"))
+				if(key < len(NDIsources) and key >= 0):
+					awaitUserInput = False
+					recieveSource = NDIsources[key]
+				else:
+					print("Input Not A Number OR Number not in NDI Range. Please pick a number between 0 and "+ str(len(NDIsources)-1))		
+			except:
+				print("Input Not A Number OR Number not in NDI Range. Please pick a number between 0 and "+ str(len(NDIsources)-1))
+		
+		#If more than one source, ask user which NDI source they want to use		
+else:
+	print("No NDI Sources Detected - Please Try Again")
+
 
 class Grip:
     ''' Makes a window dragable. '''
@@ -71,8 +97,7 @@ class MainWindow:
         #set position of where window and screen opens
         x = 10
         y = 10
-        #select source
-        source=1                    
+                       
         #format how geometry in injested
         self.window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         self.window.geometry('{}x{}'.format(width, height))
@@ -84,7 +109,7 @@ class MainWindow:
         #self.stream.start()
         #set latency defaults
         self.stop = False
-        self.window.after(25, self.video_loop)
+        self.window.after(33, self.video_loop)
         #window management to close window 
         self.window.wm_protocol("WM_DELETE_WINDOW", self.on_close) 
         #makes the window draggable when Right CLick click is held and moved
@@ -93,7 +118,8 @@ class MainWindow:
         self.window.bind("<Escape>", self.on_close)     
         self.window.bind("<ButtonRelease-2>",self.refresh)
         #self.window.bind("<ButtonRelease-2>",self.refresh)
-        
+        #self.window.bind("<Prior>",self.source0)
+        #self.window.bind("<Next>",self.source1)
         
          
        
@@ -113,7 +139,7 @@ class MainWindow:
         self.panel.configure(image=self.photo)
         #Sets how often to get frames from webcam       
         if not self.stop:
-            self.window.after(25, self.video_loop)            # 40ms = 25FPS
+            self.window.after(33, self.video_loop)            # 40ms = 25FPS
             #self.window.after(25, self.video_loop)   # 25ms = 40FPS    
     
    
@@ -122,7 +148,27 @@ class MainWindow:
         self.stop=True
         self.stop=False
         
-    
+    def source0(self,e):
+        recieveSource = 0
+        self.stop=True
+        self.stop=False
+        self.window.after(33, self.video_loop)
+        #print("sourceup")
+        #self.receiver.stop()
+        #self.reciever = receiver.create_receiver(recieveSource)
+        #self.reciever.start()
+        #self.window.after(33, self.video_loop)
+        
+    def source1(self,e):
+        recieveSource = 1 
+        self.stop=True
+        self.stop=False
+        self.window.after(33, self.video_loop)
+        #print("sourcedown")
+        #self.receiver.stop()
+        #self.reciever = receiver.create_receiver(recieveSource)
+        #self.stream.start()
+        #self.window.after(33, self.video_loop)
         
         
     
