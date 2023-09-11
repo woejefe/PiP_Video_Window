@@ -114,25 +114,24 @@ class MainWindow:
     
     def refresh(self,e):     
         print('Off')
-        self.stream.stop()
-        self.stream = VideoStream(webcamsource)
+        self.start = True
         print('On')
-        self.stream.start()
+        self.start = False
     
     def resizelarge(self,e):     
-        self.window.geometry('{}x{}'.format(860 ,440))
-        self.scale=(860, 440)
-        print("rescale up * .25")
+        self.window.geometry('{}x{}'.format(960 ,540))
+        self.scale=(960, 540)
+        print("qHD")
 
     def resizeup(self,e):     
-        self.window.geometry('{}x{}'.format(400 ,225))
-        self.scale=(400, 225)
-        print("rescale up * .25")
+        self.window.geometry('{}x{}'.format(640 ,360))
+        self.scale=(640, 360)
+        print("nHD")
         
     def resizedown(self,e):     
         self.window.geometry('{}x{}'.format(320 ,180))
         self.scale=(320,180)
-        print("rescale down * .25")    
+        print("320x180")    
     
         
     def source0(self,e):
