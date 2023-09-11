@@ -1,3 +1,55 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+from imutils.video import VideoStream
+import cv2
+import datetime
+import finder
+import receiver
+import lib
+import imutils
+
+find = finder.create_ndi_finder()
+NDIsources = find.get_sources()
+recieveSource = NDIsources[0]
+print(str(len(NDIsources)) + " NDI Sources Detected")
+for x in range(len(NDIsources)):
+            print(str(x) + ". "+NDIsources[x].name + " @ "+str(NDIsources[x].address))  
+            
+            
+class Grip:
+    ''' Makes a window dragable. '''
+    def __init__ (self, parent, disable=None, releasecmd=None) :
+        self.parent = parent
+        self.root = parent.winfo_toplevel()
+        self.disable = disable
+        if type(disable) == 'str':
+            self.disable = disable.lower()
+        self.releaseCMD = releasecmd
+        self.parent.bind('<Button-3>', self.relative_position)
+        self.parent.bind('<ButtonRelease-3>', self.drag_unbind)
+    def relative_position (self, event) :
+        cx, cy = self.parent.winfo_pointerxy()
+        geo = self.root.geometry().split("+")
+        self.oriX, self.oriY = int(geo[1]), int(geo[2])
+        self.relX = cx - self.oriX
+        self.relY = cy - self.oriY
+        self.parent.bind('<Motion>', self.drag_wid)
+    def drag_wid (self, event) :
+        cx, cy = self.parent.winfo_pointerxy()
+        d = self.disable
+        x = cx - self.relX
+        y = cy - self.relY
+        if d == 'x' :
+            x = self.oriX
+        elif d == 'y' :
+            y = self.oriY
+        self.root.geometry('+%i+%i' % (x, y))
+    def drag_unbind (self, event) :
+        self.parent.unbind('<Motion>')
+        if self.releaseCMD != None :
+            self.releaseCMD()
+            
+
             
 class MainWindow:
     def __init__(self):    
