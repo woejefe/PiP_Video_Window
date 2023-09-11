@@ -38,6 +38,8 @@ class Grip:
             self.releaseCMD()
             
 webcamsource=0
+width  = 320
+height = 180
             
 class MainWindow:
     def __init__(self):    
@@ -86,18 +88,19 @@ class MainWindow:
         self.window.bind("0",self.source0)
         self.window.bind("1",self.source1)
         self.window.bind("2",self.source2)
+        self.window.bind("<Next>",self.resizeup)
+        self.window.bind("<Prior>",self.resizedown)
+        self.window.bind("<l>",self.resizelarge)
        
         #starts window in mainloop
         self.window.mainloop()
     # function to get frames from webcam input
     def video_loop(self):      
-        width  = 320
-        height = 180
-        scale = (width, height)
+        #scale = (width, height)
         self.frame = self.stream.read()
         #reads stream input then converts to correct color range then scales down (using 16:9 ratio)
         image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
-        resize = cv2.resize(image,scale,interpolation=cv2.INTER_LINEAR)
+        resize = cv2.resize(image,self.scale,interpolation=cv2.INTER_LINEAR)
         #sets image for PhotoImage to read input as array
         self.image = Image.fromarray(resize)       
         self.photo = ImageTk.PhotoImage(self.image)  # assigned to class variable `self.photo` so it resolves problem with bug in PhotoImage
@@ -105,16 +108,31 @@ class MainWindow:
         self.panel.configure(image=self.photo)
         #Sets how often to get frames from webcam       
         if not self.stop:
-            self.window.after(33, self.video_loop)            # 40ms = 25FPS
-            #self.window.after(25, self.video_loop)   # 25ms = 40FPS    
+            self.window.after(33, self.video_loop)            # 40ms = 25FPS 33ms=30 fps  # 25ms = 40FPS    
     
    
     
     def refresh(self,e):     
         print('Off')
-        self.window.after(33, self.video_loop)
+        self.start = True
         print('On')
+        self.start = False
+    
+    def resizelarge(self,e):     
+        self.window.geometry('{}x{}'.format(860 ,440))
+        self.scale=(860, 440)
+        print("rescale up * .25")
+
+    def resizeup(self,e):     
+        self.window.geometry('{}x{}'.format(400 ,225))
+        self.scale=(400, 225)
+        print("rescale up * .25")
         
+    def resizedown(self,e):     
+        self.window.geometry('{}x{}'.format(320 ,180))
+        self.scale=(320,180)
+        print("rescale down * .25")    
+    
         
     def source0(self,e):
         webcamsource=0
@@ -122,7 +140,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        self.window.after(33, self.video_loop)
+        #self.window.after(33, self.video_loop)
         
     def source1(self,e):
         webcamsource=1    
@@ -130,7 +148,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        self.window.after(33, self.video_loop)
+        #self.window.after(33, self.video_loop)
     
     def source2(self,e):
         webcamsource=2    
@@ -138,7 +156,7 @@ class MainWindow:
         self.stream.stop()
         self.stream = VideoStream(webcamsource)
         self.stream.start()
-        self.window.after(33, self.video_loop)   
+        #self.window.after(33, self.video_loop)   
        
         
     
