@@ -12,7 +12,7 @@ I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, 
 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
-This is MUCH faster latency than the NDI version with the caveat of tying up the webcam input
+This is MUCH faster latency than the NDI version with multiple streams....with the caveat of tying up the webcam input ( it renders the frames on the GPU wheras the NDI one seems to be on CPU)
 
 
 Currently need help on line 74 (should be easy just need to make a variable for the line "self.stream=VideoStream(0)") and also want to have a way to retry the connection on failing to get device 
