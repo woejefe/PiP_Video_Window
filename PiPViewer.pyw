@@ -79,12 +79,13 @@ class MainWindow:
         #window management to close window 
         self.window.wm_protocol("WM_DELETE_WINDOW", self.on_close) 
         #makes the window draggable when Right CLick click is held and moved
-        grip = Grip(self.window)
+        grip = Grip(self.panel)
         #Binds Escape Button to close window and middle click to refresh stream
         self.window.bind("<Escape>", self.on_close)     
         self.window.bind("<ButtonRelease-2>",self.refresh)
-        self.window.bind("<Prior>",self.source0)
-        self.window.bind("<Next>",self.source1)
+        self.window.bind("0",self.source0)
+        self.window.bind("1",self.source1)
+        self.window.bind("2",self.source2)
        
         #starts window in mainloop
         self.window.mainloop()
@@ -130,7 +131,14 @@ class MainWindow:
         self.stream = VideoStream(webcamsource)
         self.stream.start()
         self.window.after(33, self.video_loop)
-        
+    
+    def source2(self,e):
+        webcamsource=2    
+        print("sourcedown")
+        self.stream.stop()
+        self.stream = VideoStream(webcamsource)
+        self.stream.start()
+        self.window.after(33, self.video_loop)   
        
         
     
