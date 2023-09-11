@@ -13,7 +13,7 @@ I wanted a way to display a video input such as; NDI,RTMP,Webcam,CaptureDevice, 
 You can use it as a monitor to see whats happening in on other devices/streams/ basically whatever you can pipe into a webcam input
 
 
-Currently need help to pick stream in popup window and also want to have a way to retry the connection on failing to get device 
+
 
 Dependencies are pillow, imutils, tkinter, and C2V, and "The NDI runtime must be installed. Recommended NDI tools to be installed too for testing." per [CarlosFdez](https://github.com/CarlosFdez)
 
