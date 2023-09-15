@@ -101,7 +101,7 @@ class MainWindow:
         self.window.bind("<q>",self.resizeog)
         self.window.bind("<e>",self.resizeqhd)
         self.window.bind("<r>",self.resizefhd)
-        
+        self.window.bind("<m>",self.popupmsg)
         #create the capture label for video 
         self.panel = tk.Label(self.window)
         self.panel.pack(side="left")
@@ -147,6 +147,7 @@ class MainWindow:
     def source9(self,e):
         self.frame=recieveSource[9]
     
+    
     def resizefhd(self,e):     
         self.window.geometry('{}x{}'.format(1280 ,720))
         self.scale=(1280, 720)
@@ -168,23 +169,18 @@ class MainWindow:
         print("320x180")  
     
     
-    #def popupmsg(self,e):
-       # popup = tk.Tk()
-       # popup.wm_title("NDI Sources")
-        #label = tk.Label(popup, text=recieveSource)
-        #label.pack(side="top", fill="x", pady=10)
-     #   B1 = tk.Button(popup, text="Close", command = popup.destroy)
-      #  B1.pack()
-      #  B2 = tk.Button(popup, text="Source0", command = self.source1())
-      #  B2.pack()
-        #popup.mainloop()
-        
-    
-
+    def popupmsg(self,e):
+        popup = tk.Tk()
+        popup.wm_title("NDI Sources")
+        label = tk.Label(popup, text="-Right-Click and move to drag window. \n \n -Use number keys to switch sources. \n \n -ESC to close window. \n \n -Q,W,E,R to change video resolution")
+        label.pack(side="top", fill="x", pady=10)
+        B1 = tk.Button(popup, text="Close", command = popup.destroy)
+        B1.pack()
+      
 
     def on_close(self,e):
         self.stop = True
-        #self.receiver.stop()
+        self.frame.stop()
         self.window.destroy()
 
 
