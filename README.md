@@ -9,11 +9,8 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 - Opens borderless window in a 320&times;180 window positioned at
   `x=10, y=10`.
 - **Right click & drag** to move the window.
-- **Middle click** to refresh the video stream.
-- Press **0**, **1** or **2** to switch between available cameras.
-- **Page&nbsp;Up** and **Page&nbsp;Down** resize to `640x360` or `320x180`.
-- Press **L** to enlarge to `960x540`.
 - **Escape** or **Alt+F4** closes the viewer.
+- **F1** for source menu **F2** for help menu
 
 ## Usage
 
@@ -21,8 +18,7 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 python PiPViewer.pyw
 ```
 
-After launching, use the keyboard shortcuts above to change sources or resize the
-preview. The window always stays on top of other applications.
+After launching, use the buttons to change sources. The window always stays on top of other applications.
 
 ## Dependencies
 
