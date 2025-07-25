@@ -18,7 +18,10 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 python PiPViewer.py
 ```
 
-After launching, use the buttons to change sources. The window always stays on top of other applications.
+After launching, use the buttons to change sources in the main window. if you need to re-select a source use **F1** to pull up source menu
+The window always stays on top of other applications.
+Use refresh key in Source menu to update sources
+Use RTSP key to add a network stream
 
 ## Dependencies
 
