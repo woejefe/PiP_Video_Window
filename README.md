@@ -15,7 +15,7 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 ## Usage
 
 ```bash
-python PiPViewer.py
+python PiPv1.py
 ```
 
 After launching, use the buttons to change sources in the main window. if you need to re-select a source use **F1** to pull up source menu
