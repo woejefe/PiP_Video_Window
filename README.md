@@ -15,7 +15,7 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 ## Usage
 
 ```bash
-python PiPViewer.pyw
+python PiPViewer.py
 ```
 
 After launching, use the buttons to change sources. The window always stays on top of other applications.
@@ -35,9 +35,7 @@ pip install pillow imutils opencv-python
 ```
 
 ## Additional Notes
-
-A version that accepts NDI sources is available on the `PiP NDI` branch. See
-<https://github.com/CarlosFdez/pyNDI/tree/master> for the underlying NDI
+See <https://github.com/CarlosFdez/pyNDI/tree/master> for the underlying NDI
 implementation.
 
 ![screenshot](https://github.com/woejefe/MiniWebcamViewer/assets/113958695/a124a9f2-a739-432e-a921-85cd8e269dc9)
