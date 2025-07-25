@@ -6,7 +6,7 @@ picture-in-picture monitor and works well with tools like TouchOSC.
 
 ## Features
 
-- Opens the first webcam automatically in a 320&times;180 window positioned at
+- Opens borderless window in a 320&times;180 window positioned at
   `x=10, y=10`.
 - **Right click & drag** to move the window.
 - **Middle click** to refresh the video stream.
